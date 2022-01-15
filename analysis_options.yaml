@@ -2,3 +2,26 @@ include: package:flutter_lints/flutter.yaml
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+    dead_code : info
+    prefer_single_quotes: warning
+    avoid_print: error
+    avoid_as: error
+    avoid_dynamic_calls: error
+
+  strong-mode:
+    implicit-dynamic: true
+    implicit-casts: true
+
+linter:
+  rules:
+    - always_declare_return_types
+    - prefer_single_quotes
+    - avoid_print
+    - close_sinks
+    - avoid_empty_else
+    - avoid_returning_null
+    - prefer_relative_imports
+    - prefer_const_constructors
