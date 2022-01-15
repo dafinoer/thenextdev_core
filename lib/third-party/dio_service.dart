@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:thenextdev_core/service_setup.dart';
+import '../../service_setup.dart';
 
 class DioService {
   static late final Dio service;

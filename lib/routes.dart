@@ -7,8 +7,8 @@ class TheNextDevRoute {
   static late final FluroRouter router;
 
   factory TheNextDevRoute.create() {
-    final fluro = FluroRouter();
-    router = fluro;
+    final fluroRouter = FluroRouter();
+    router = fluroRouter;
     return TheNextDevRoute._(router);
   }
 
