@@ -5,7 +5,7 @@ abstract class ServiceSetup {
 
   const ServiceSetup({
     required this.baseUrl,
-    this.receiveTimeOut = 5000,
-    this.connectTimeOut = 3000,
+    this.receiveTimeOut = 50000,
+    this.connectTimeOut = 30000,
   });
 }
