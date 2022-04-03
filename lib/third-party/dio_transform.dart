@@ -11,7 +11,7 @@ class TheNextDevTransform extends DefaultTransformer {
   Future transformResponse(
       RequestOptions options, ResponseBody response) async {
     if (options.responseType == ResponseType.stream) return response;
-    final _completer = Completer();
+    final completer = Completer();
     final chunks = <Uint8List>[];
     int finalSize = 0;
     final _subscription = _onListenProgressResponse(options, response).listen(
@@ -19,16 +19,16 @@ class TheNextDevTransform extends DefaultTransformer {
         finalSize += event.length;
         chunks.add(event);
       },
-      onError: (error, stackTrace) => _completer.completeError(error),
+      onError: (error, stackTrace) => completer.completeError(error),
       cancelOnError: true,
-      onDone: () => _completer.complete(),
+      onDone: () => completer.complete(),
     );
     options.cancelToken?.whenCancel.then((value) => _subscription.cancel());
 
     if (options.receiveTimeout > 0) {
-      await _timeOutResponse(_completer, options, response, _subscription);
+      await _timeOutResponse(completer, options, response, _subscription);
     } else {
-      return _completer.future;
+      return completer.future;
     }
 
     if (options.responseType == ResponseType.bytes) {
